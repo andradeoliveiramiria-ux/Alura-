@@ -1,0 +1,103 @@
+/* --- VARIÁVEIS E DESIGN SYSTEM --- */
+:root {
+    --primary-color: #2d5a27;
+    --secondary-color: #8fb339;
+    --bg-color: #f9fbf9;
+    --text-color: #333;
+    --white: #ffffff;
+    --radius: 12px;
+    --transition: all 0.3s ease;
+    --gap: 1.5rem;
+}
+
+/* --- MODO ALTO CONTRASTE --- */
+body.high-contrast {
+    --primary-color: #ffff00;
+    --secondary-color: #0000ff;
+    --bg-color: #000;
+    --text-color: #fff;
+    --white: #1a1a1a;
+}
+
+/* --- RESET E BASE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: font-size 0.2s ease;
+}
+
+/* --- LAYOUT --- */
+.main-header {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- GRID DE ÁRVORES (MODIFICAR AQUI PARA COLUNAS) --- */
+.tree-grid {
+    display: grid;
+    gap: var(--gap);
+    padding: 2rem 5%;
+    /* Mobile: 1 coluna | Tablet/Desktop: 3 colunas */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* --- COMPONENTES --- */
+.tree-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--primary-color);
+    margin: 1rem 5%;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.active {
+    max-height: 200px;
+    padding: 1rem;
+}
+
+/* --- ANIMAÇÕES --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s all ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
